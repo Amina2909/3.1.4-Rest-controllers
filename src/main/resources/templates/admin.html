@@ -179,15 +179,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form th:action="@{/admin/updateUser/{id}(id=${user.id})}" th:object="${emptyUser}" method="post">
+                    <form th:action="@{/admin/updateUser/{id}(id=${user.id})}" method="post">
+                        <!-- Поле для ID -->
+                        <div class="mb-3">
+                            <label for="editId" class="form-label">ID:</label>
+                            <input type="text" id="editId" class="form-control" th:value="${user.id}" readonly>
+                        </div>
+
+                        <!-- Поле для Name -->
                         <div class="mb-3">
                             <label for="editName" class="form-label">Name:</label>
-                            <input type="text" id="editName" th:field="*{name}" class="form-control" th:value="${user.name}" required>
+                            <input type="text" id="editName" name="name" class="form-control" th:value="${user.name}" required>
                         </div>
+
+                        <!-- Поле для Email -->
                         <div class="mb-3">
                             <label for="editEmail" class="form-label">Email:</label>
-                            <input type="email" id="editEmail" th:field="*{email}" class="form-control" th:value="${user.email}" required>
+                            <input type="email" id="editEmail" name="email" class="form-control" th:value="${user.email}" required>
                         </div>
+
+                        <!-- Поле для Password -->
+                        <div class="mb-3">
+                            <label for="editPassword" class="form-label">Password:</label>
+                            <input type="password" id="editPassword" name="password" class="form-control" placeholder="Enter new password">
+                        </div>
+
+                        <!-- Поле для Roles -->
                         <div class="mb-3">
                             <label for="editRoles" class="form-label">Roles:</label>
                             <select id="editRoles" name="userRolesSelector" class="form-select" multiple>
@@ -198,6 +215,8 @@
                                 </option>
                             </select>
                         </div>
+
+                        <!-- Кнопка для сохранения изменений -->
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
                 </div>
