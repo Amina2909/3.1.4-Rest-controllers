@@ -5,6 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RoleService {
-    List<Role> getAllRoles();
-    Role getRoleByName(String roleName);
+    List<Role> findAll();
+    Role findById(Long id);
 }
