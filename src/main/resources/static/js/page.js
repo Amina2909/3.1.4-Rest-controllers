@@ -294,8 +294,12 @@ $(document).ready(function () {
         const formData = {
             name: $('#editName').val(),
             email: $('#editEmail').val(),
+            password: $('#editPassword').val(),
             roleIds: Array.from($('#editRoles').val()).map(Number)
         };
+        if (!formData.password) {
+            delete formData.password;
+        }
         console.log('Данные для обновления:', formData); // Отладочный вывод
 
         fetch(`/api/admin/users/${userId}`, {
